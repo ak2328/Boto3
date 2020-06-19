@@ -7,3 +7,11 @@ s3_mag_con = aws_mag_con.resource('s3', 'ap-south-1')
 result = iam_mag_con.users
 for each in result.limit(2):
     print(each.name)
+
+result = s3_mag_con.buckets
+for each in result.all():
+    print(each.name)   
+
+result = ec2_mag_con.instances
+for each in result.all():
+    print(each.tags[0]['Value'])
