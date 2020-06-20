@@ -9,4 +9,3 @@ for each in result['Reservations']:
             print('--------')
             print("Then name of instance: {}\n The Image id is: {}\n The instance id is: {}\n The instance launch time is: {}\n The Hypervisor is: {}\n The current state of instance is: {}".format(each_item['Tags'][0]['Value'],each_item['ImageId'],each_item['InstanceId'],each_item['LaunchTime'].strftime("%d-%m-%Y"),each_item['Hypervisor'],each_item['State']['Name']))
 
-
