@@ -33,7 +33,8 @@ def main():
    csv_ob=open(CSV_NAME,"w",newline='')
    csv_w= csv.writer(csv_ob)
    csv_w.writerow(["UserName","AccessKey","AccessKeyId"])
-   csv_w.writerow([ Iam_user_name , response['AccessKey']['AccessKeyId'] , response['AccessKey']['SecretAccessKey']])                                                                                       
+   csv_w.writerow([ Iam_user_name , response['AccessKey']['AccessKeyId'] , response['AccessKey']['SecretAccessKey']])
+   print("User Created")                                                                                       
    return None                                                                                                            
                                                                                                                           
 if __name__=="__main__":                                                                                                  
