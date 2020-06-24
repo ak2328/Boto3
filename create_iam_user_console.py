@@ -34,13 +34,15 @@ def main():
          sys.exit(0)          
     iam_client.create_login_profile(UserName = Iam_User_Name , Password = password ,PasswordResetRequired = True )
     iam_client.attach_user_policy(UserName = Iam_User_Name , PolicyArn = PolicyArn)
-    print("IAM User Name={} and Password={}".format(Iam_User_Name , password))
+    response = iam_client.create_access_key(UserName=Iam_User_Name) 
+    #print("IAM User Name={} and Password={}".format(Iam_User_Name , password))
     Arn = iam_client.get_user(UserName='ak2328')['User']['Arn']
     CSV_NAME = 'IAMCRED{}.csv'.format(choice(number))
     csv_ob=open(CSV_NAME,"w",newline='')
     csv_w= csv.writer(csv_ob)
-    csv_w.writerow(["UserName" , "Password" , "Arn"])
-    csv_w.writerow([Iam_User_Name , password , Arn])
+    csv_w.writerow(["UserName" , "Password" , "Arn","AccessKey","AccessKeyId"])
+    csv_w.writerow([Iam_User_Name , password , Arn , response['AccessKey']['AccessKeyId'] , response['AccessKey']['SecretAccessKey']])
+    print("User Created")
     return None
     
 
